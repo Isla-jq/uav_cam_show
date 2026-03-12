@@ -1,0 +1,11 @@
+[project]
+name = "uav-cam-show"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.3",
+    "paho-mqtt>=2.1.0",
+    "pillow>=12.1.1",
+]
