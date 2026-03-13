@@ -1,6 +1,6 @@
 import time
 import logging
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 import paho.mqtt.client as mqtt
 
 class MqttStreamer:
@@ -53,6 +53,12 @@ def video_feed():
     return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/api/click-event',methods=["POST"])
+def get_button():
+    data = request.get_json()
+    print(data)
+    return {"status": "success", "message": "已收到点击事件"}, 200
+
 if __name__ == '__main__':
     streamer.start()
-    app.run(host="0.0.0.0", port=5500, debug=False)
+    app.run(host="0.0.0.0", port=5500, debug=True)
