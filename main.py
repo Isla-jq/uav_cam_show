@@ -3,10 +3,6 @@ import logging
 from flask import Flask, render_template, Response
 import paho.mqtt.client as mqtt
 
-# 配置日志
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 class MqttStreamer:
     def __init__(self):
         self.client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2)
@@ -19,10 +15,10 @@ class MqttStreamer:
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
         if reason_code == 0:
-            logger.info("Connected to MQTT Broker!")
+            print("Connected to MQTT Broker!")
             client.subscribe("/below_cam/img_compress")
         else:
-            logger.error(f"Failed to connect, return code {reason_code}")
+            print(f"Failed to connect, return code {reason_code}")
 
     def on_message(self, client, userdata, msg):
         if msg.payload:
@@ -36,7 +32,6 @@ class MqttStreamer:
     def get_frame(self):
         return self.current_frame
 
-# 初始化组件
 streamer = MqttStreamer()
 app = Flask(__name__)
 

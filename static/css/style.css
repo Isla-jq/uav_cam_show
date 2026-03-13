@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.shell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#uav1 {
+    width:640px;
+    height:480px;
+    border:2px solid #c5c4c4;
+    border-radius: 20px;
+}
+.but {
+    margin: 20px;
+}
+button {
+    width: 100px;
+    height: 30px;
+}
+#uav1_but {
+    background-color: rgb(10, 129, 90);
+    border: none;
+    color: #f0f0f0;
+    cursor: pointer;
+}
+#uav2_but {
+    margin: 0 0 0 30px;
+    background-color: rgb(10, 28, 129);
+    color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+
+#uav1_but:active{
+    background-color: rgb(44, 190, 142);
+    transform: scale(0.98);
+}
+#uav2_but:active{
+    background-color: rgb(42, 66, 204);
+    transform: scale(0.98);
+}
